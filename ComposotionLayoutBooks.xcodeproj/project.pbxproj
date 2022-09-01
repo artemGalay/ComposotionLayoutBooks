@@ -12,6 +12,7 @@
 		D954670A28C0B092003AAD10 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D954670928C0B092003AAD10 /* MainViewController.swift */; };
 		D954670F28C0B093003AAD10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D954670E28C0B093003AAD10 /* Assets.xcassets */; };
 		D954671228C0B093003AAD10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D954671028C0B093003AAD10 /* LaunchScreen.storyboard */; };
+		D954672228C0BA70003AAD10 /* TypeBooksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D954672128C0BA70003AAD10 /* TypeBooksCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		D954670E28C0B093003AAD10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D954671128C0B093003AAD10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D954671328C0B093003AAD10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D954672128C0BA70003AAD10 /* TypeBooksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBooksCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				D954671C28C0B3D9003AAD10 /* App */,
 				D954671D28C0B3F3003AAD10 /* Models */,
 				D954671E28C0B3FD003AAD10 /* Controllers */,
+				D954672028C0B92A003AAD10 /* Items */,
 				D954671F28C0B4C3003AAD10 /* Storyboards */,
 			);
 			path = Sources;
@@ -118,6 +121,14 @@
 				D954671028C0B093003AAD10 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D954672028C0B92A003AAD10 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				D954672128C0BA70003AAD10 /* TypeBooksCollectionViewCell.swift */,
+			);
+			path = Items;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D954670A28C0B092003AAD10 /* MainViewController.swift in Sources */,
+				D954672228C0BA70003AAD10 /* TypeBooksCollectionViewCell.swift in Sources */,
 				D954670628C0B092003AAD10 /* AppDelegate.swift in Sources */,
 				D954670828C0B092003AAD10 /* SceneDelegate.swift in Sources */,
 			);
