@@ -29,7 +29,6 @@ class BottomBooksCollectionViewCell: UICollectionViewCell {
     lazy var numberLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -37,7 +36,6 @@ class BottomBooksCollectionViewCell: UICollectionViewCell {
     lazy var bookNumberLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
-        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label
@@ -46,7 +44,6 @@ class BottomBooksCollectionViewCell: UICollectionViewCell {
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
-        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

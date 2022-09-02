@@ -16,6 +16,7 @@
 		D954672428C0CF89003AAD10 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D954672328C0CF89003AAD10 /* Model.swift */; };
 		D954672628C1EA1D003AAD10 /* CenterBooksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D954672528C1EA1D003AAD10 /* CenterBooksCollectionViewCell.swift */; };
 		D954672828C20C1B003AAD10 /* BottomBooksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D954672728C20C1B003AAD10 /* BottomBooksCollectionViewCell.swift */; };
+		D954672A28C221B1003AAD10 /* CenterBooksCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D954672928C221B1003AAD10 /* CenterBooksCellHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D954672328C0CF89003AAD10 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D954672528C1EA1D003AAD10 /* CenterBooksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterBooksCollectionViewCell.swift; sourceTree = "<group>"; };
 		D954672728C20C1B003AAD10 /* BottomBooksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBooksCollectionViewCell.swift; sourceTree = "<group>"; };
+		D954672928C221B1003AAD10 /* CenterBooksCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterBooksCellHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				D954672128C0BA70003AAD10 /* TopBooksCollectionViewCell.swift */,
 				D954672528C1EA1D003AAD10 /* CenterBooksCollectionViewCell.swift */,
 				D954672728C20C1B003AAD10 /* BottomBooksCollectionViewCell.swift */,
+				D954672928C221B1003AAD10 /* CenterBooksCellHeader.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				D954670A28C0B092003AAD10 /* MainViewController.swift in Sources */,
 				D954672228C0BA70003AAD10 /* TopBooksCollectionViewCell.swift in Sources */,
 				D954670628C0B092003AAD10 /* AppDelegate.swift in Sources */,
+				D954672A28C221B1003AAD10 /* CenterBooksCellHeader.swift in Sources */,
 				D954670828C0B092003AAD10 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

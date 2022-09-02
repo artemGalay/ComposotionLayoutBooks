@@ -15,6 +15,10 @@ class MainViewController: UIViewController {
         collectionView.register(TypeBooksCollectionViewCell.self, forCellWithReuseIdentifier: TypeBooksCollectionViewCell.identifier)
         collectionView.register(CenterBooksCollectionViewCell.self, forCellWithReuseIdentifier: CenterBooksCollectionViewCell.identifier)
         collectionView.register(BottomBooksCollectionViewCell.self, forCellWithReuseIdentifier: BottomBooksCollectionViewCell.identifier)
+        collectionView.register(CenterBooksCellHeader.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: CenterBooksCellHeader.identifier)
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,6 +27,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "BOOKS"
         setupHierarchy()
         setupLayout()
     }
@@ -71,9 +76,12 @@ class MainViewController: UIViewController {
                 let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [layoutItem])
                 layoutGroup.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
 
+                let layoutHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93), heightDimension: .estimated(80))
+                let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: layoutHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+
                 let sectionLayout = NSCollectionLayoutSection(group: layoutGroup)
-                sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
                 sectionLayout.orthogonalScrollingBehavior = .continuous
+                sectionLayout.boundarySupplementaryItems = [layoutSectionHeader]
 
                 return sectionLayout
             default:
@@ -87,9 +95,13 @@ class MainViewController: UIViewController {
                 let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
                 layoutGroup.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
 
+                let layoutHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93), heightDimension: .estimated(80))
+                let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: layoutHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+
                 let sectionLayout = NSCollectionLayoutSection(group: layoutGroup)
                 sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
                 sectionLayout.orthogonalScrollingBehavior = .continuous
+                sectionLayout.boundarySupplementaryItems = [layoutSectionHeader]
 
                 return sectionLayout
             }
@@ -122,6 +134,23 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             let item = collectionView.dequeueReusableCell(withReuseIdentifier: BottomBooksCollectionViewCell.identifier, for: indexPath) as? BottomBooksCollectionViewCell
             item?.contents = CompositionalModel.modelsArray[indexPath.section][indexPath.item]
             return item ?? UICollectionViewCell()
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        switch indexPath.section {
+        case 0:
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath)
+            return header
+        case 1:
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CenterBooksCellHeader.identifier, for: indexPath) as? CenterBooksCellHeader
+            header?.titleLabel.text = "Fiction And Literature"
+            return header ?? UICollectionReusableView()
+        default:
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CenterBooksCellHeader.identifier, for: indexPath) as? CenterBooksCellHeader
+            header?.titleLabel.text = "Top Sales"
+            return header ?? UICollectionReusableView()
         }
     }
 }
