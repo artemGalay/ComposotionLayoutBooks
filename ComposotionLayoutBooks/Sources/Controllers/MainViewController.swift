@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
         let layout = createLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(TypeBooksCollectionViewCell.self, forCellWithReuseIdentifier: TypeBooksCollectionViewCell.identifier)
+        collectionView.register(CenterBooksCollectionViewCell.self, forCellWithReuseIdentifier: CenterBooksCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -41,12 +42,56 @@ class MainViewController: UIViewController {
     private func createLayout() -> UICollectionViewCompositionalLayout {
 
         return UICollectionViewCompositionalLayout { sectionIndex, _ in
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalWidth(0.2))
-            let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-            let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: layoutItem, count: 4)
-            let sectionLayout = NSCollectionLayoutSection(group: layoutGroup)
-            return sectionLayout
+
+            switch sectionIndex {
+            case 0:
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+
+                let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+                layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(300))
+
+                let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
+
+                let sectionLayout = NSCollectionLayoutSection(group: layoutGroup)
+                sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0)
+                sectionLayout.orthogonalScrollingBehavior = .groupPagingCentered
+
+                return sectionLayout
+            case 1:
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalWidth(0.9))
+
+                let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+                layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(300))
+
+                let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [layoutItem])
+                layoutGroup.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+
+                let sectionLayout = NSCollectionLayoutSection(group: layoutGroup)
+                sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+                sectionLayout.orthogonalScrollingBehavior = .continuous
+
+                return sectionLayout
+            default:
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+
+                let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+                layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.2))
+
+                let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: layoutItem, count: 1)
+                layoutGroup.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+
+                let sectionLayout = NSCollectionLayoutSection(group: layoutGroup)
+                sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+                sectionLayout.orthogonalScrollingBehavior = .groupPaging
+
+                return sectionLayout
+            }
         }
     }
 }
@@ -54,43 +99,29 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        3
+        return CompositionalModel.modelsArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        switch section {
-        case 0:
-            return 20
-        case 1:
-            return 10
-        case 2:
-            return 20
-        default:
-            return 1
-        }
+        return CompositionalModel.modelsArray[section].count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//        switch indexPath.section {
-//        case 0:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompositionalCell.identifier, for: indexPath)
-//            cell.backgroundColor = .systemGreen
-//            return cell
-//        case 1:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompositionalCell.identifier, for: indexPath)
-//            cell.backgroundColor = .systemBlue
-//            return cell
-//        case 2:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompositionalCell.identifier, for: indexPath)
-//            cell.backgroundColor = .systemYellow
-//            return cell
-//        default:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompositionalCell.identifier, for: indexPath)
-//            cell.backgroundColor = .systemGreen
-//            return cell
-        return UICollectionViewCell()
+
+        switch indexPath.section {
+        case 0 :
+            let item = collectionView.dequeueReusableCell(withReuseIdentifier: TypeBooksCollectionViewCell.identifier, for: indexPath) as? TypeBooksCollectionViewCell
+            item?.contents = CompositionalModel.modelsArray[indexPath.section][indexPath.item]
+            return item ?? UICollectionViewCell()
+        case 1:
+            let item = collectionView.dequeueReusableCell(withReuseIdentifier: CenterBooksCollectionViewCell.identifier, for: indexPath) as? CenterBooksCollectionViewCell
+            item?.contents = CompositionalModel.modelsArray[indexPath.section][indexPath.item]
+            return item ?? UICollectionViewCell()
+        default:
+            let item = collectionView.dequeueReusableCell(withReuseIdentifier: TypeBooksCollectionViewCell.identifier, for: indexPath) as? TypeBooksCollectionViewCell
+            item?.contents = CompositionalModel.modelsArray[indexPath.section][indexPath.item]
+            return item ?? UICollectionViewCell()
+        }
     }
-    }
+}
 

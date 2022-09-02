@@ -11,41 +11,50 @@ class TypeBooksCollectionViewCell: UICollectionViewCell {
 
     static let identifier = "typeBooksCell"
 
-    private lazy var image: UIImageView = {
+    var contents: CompositionalModel? {
+        didSet {
+            image.image = UIImage(named: contents?.image ?? "")
+            nameLabel.text = contents?.mainTitle
+            typeBooksLabel.text = contents?.description
+        }
+    }
+
+    lazy var image: UIImageView = {
         let image = UIImageView()
+        image.clipsToBounds = true
+        image.layer.cornerRadius = 10
         image.contentMode = .scaleAspectFill
-        image.layer.shadowColor = UIColor.white.cgColor
-//        image.layer.shadowOpacity = 0.3
-//        image.layer.shadowOffset = .zero
-//        image.layer.shadowRadius = 10
-//        image.layer.shouldRasterize = true
-        image.layer.rasterizationScale = UIScreen.main.scale
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
 
-    private lazy var nameLabel: UILabel = {
+    lazy var nameLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private lazy var typeBooksLabel: UILabel = {
+    lazy var typeBooksLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private let mainStack: UIStackView = {
+    let mainStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.alignment = .center
+        stack.alignment = .leading
         stack.distribution = .fill
+        stack.spacing = 2
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
 
-    private let labelStack: UIStackView = {
+    let labelStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .leading
@@ -66,16 +75,19 @@ class TypeBooksCollectionViewCell: UICollectionViewCell {
     }
 
     private func setupHierarchy() {
-        addSubview(mainStack)
-        mainStack.addArrangedSubview(labelStack)
-        labelStack.addArrangedSubview(typeBooksLabel)
+        contentView.addSubview(labelStack)
         labelStack.addArrangedSubview(nameLabel)
+        labelStack.addArrangedSubview(typeBooksLabel)
+        labelStack.addArrangedSubview(image)
     }
 
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            mainStack.heightAnchor.constraint(equalToConstant: 100),
-            mainStack.widthAnchor.constraint(equalToConstant: 150)
+
+            labelStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            labelStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+            labelStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            labelStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
         ])
     }
 
