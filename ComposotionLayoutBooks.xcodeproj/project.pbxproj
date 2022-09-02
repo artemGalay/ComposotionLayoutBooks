@@ -15,6 +15,7 @@
 		D954672228C0BA70003AAD10 /* TopBooksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D954672128C0BA70003AAD10 /* TopBooksCollectionViewCell.swift */; };
 		D954672428C0CF89003AAD10 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D954672328C0CF89003AAD10 /* Model.swift */; };
 		D954672628C1EA1D003AAD10 /* CenterBooksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D954672528C1EA1D003AAD10 /* CenterBooksCollectionViewCell.swift */; };
+		D954672828C20C1B003AAD10 /* BottomBooksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D954672728C20C1B003AAD10 /* BottomBooksCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D954672128C0BA70003AAD10 /* TopBooksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBooksCollectionViewCell.swift; sourceTree = "<group>"; };
 		D954672328C0CF89003AAD10 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D954672528C1EA1D003AAD10 /* CenterBooksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterBooksCollectionViewCell.swift; sourceTree = "<group>"; };
+		D954672728C20C1B003AAD10 /* BottomBooksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBooksCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				D954672128C0BA70003AAD10 /* TopBooksCollectionViewCell.swift */,
 				D954672528C1EA1D003AAD10 /* CenterBooksCollectionViewCell.swift */,
+				D954672728C20C1B003AAD10 /* BottomBooksCollectionViewCell.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D954672628C1EA1D003AAD10 /* CenterBooksCollectionViewCell.swift in Sources */,
+				D954672828C20C1B003AAD10 /* BottomBooksCollectionViewCell.swift in Sources */,
 				D954672428C0CF89003AAD10 /* Model.swift in Sources */,
 				D954670A28C0B092003AAD10 /* MainViewController.swift in Sources */,
 				D954672228C0BA70003AAD10 /* TopBooksCollectionViewCell.swift in Sources */,

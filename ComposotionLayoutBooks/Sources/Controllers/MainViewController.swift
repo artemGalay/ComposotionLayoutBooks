@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(TypeBooksCollectionViewCell.self, forCellWithReuseIdentifier: TypeBooksCollectionViewCell.identifier)
         collectionView.register(CenterBooksCollectionViewCell.self, forCellWithReuseIdentifier: CenterBooksCollectionViewCell.identifier)
+        collectionView.register(BottomBooksCollectionViewCell.self, forCellWithReuseIdentifier: BottomBooksCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,19 +77,19 @@ class MainViewController: UIViewController {
 
                 return sectionLayout
             default:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.33))
 
                 let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
                 layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
 
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.2))
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93), heightDimension: .fractionalWidth(0.55))
 
-                let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: layoutItem, count: 1)
-                layoutGroup.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+                let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
+                layoutGroup.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
 
                 let sectionLayout = NSCollectionLayoutSection(group: layoutGroup)
-                sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
-                sectionLayout.orthogonalScrollingBehavior = .groupPaging
+                sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+                sectionLayout.orthogonalScrollingBehavior = .continuous
 
                 return sectionLayout
             }
@@ -118,7 +119,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             item?.contents = CompositionalModel.modelsArray[indexPath.section][indexPath.item]
             return item ?? UICollectionViewCell()
         default:
-            let item = collectionView.dequeueReusableCell(withReuseIdentifier: TypeBooksCollectionViewCell.identifier, for: indexPath) as? TypeBooksCollectionViewCell
+            let item = collectionView.dequeueReusableCell(withReuseIdentifier: BottomBooksCollectionViewCell.identifier, for: indexPath) as? BottomBooksCollectionViewCell
             item?.contents = CompositionalModel.modelsArray[indexPath.section][indexPath.item]
             return item ?? UICollectionViewCell()
         }

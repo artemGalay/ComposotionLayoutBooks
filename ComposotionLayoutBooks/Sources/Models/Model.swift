@@ -27,16 +27,16 @@ extension CompositionalModel {
          CompositionalModel(image: "3"),
          CompositionalModel(image: "4"),
          CompositionalModel(image: "5")
+        ],
+        [CompositionalModel(mainTitle: "Book Six", description: "Description of book six", image: "6", nubmerOfItem: 6),
+        CompositionalModel(mainTitle: "Book Seven", description: "Description of book seven", image: "7", nubmerOfItem: 7),
+        CompositionalModel(mainTitle: "Book Eight", description: "Description of book eight", image: "8", nubmerOfItem: 8),
+        CompositionalModel(mainTitle: "Book Nine", description: "Description of book nine", image: "9", nubmerOfItem: 9),
+        CompositionalModel(mainTitle: "Book Ten", description: "Description of book ten", image: "10", nubmerOfItem: 10),
+        CompositionalModel(mainTitle: "Book Eleven", description: "Description of book eleven", image: "11", nubmerOfItem: 11),
+        CompositionalModel(mainTitle: "Book Twelve", description: "Description of book twelve", image: "12", nubmerOfItem: 12),
+        CompositionalModel(mainTitle: "Book Thirteen", description: "Description of book thirteen", image: "13", nubmerOfItem: 13),
+        CompositionalModel(mainTitle: "Book Fourteen", description: "Description of book fourteen", image: "14", nubmerOfItem: 14)
         ]
-//        [CompositionalModel(mainTitle: "Book Six", description: "Description of book six", image: "book6", nubmerOfItem: 6),
-//        CompositionalModel(mainTitle: "Book Seven", description: "Description of book seven", image: "book7", nubmerOfItem: 7),
-//        CompositionalModel(mainTitle: "Book Eight", description: "Description of book eight", image: "book8", nubmerOfItem: 8),
-//        CompositionalModel(mainTitle: "Book Nine", description: "Description of book nine", image: "book9", nubmerOfItem: 9),
-//        CompositionalModel(mainTitle: "Book Ten", description: "Description of book ten", image: "book10", nubmerOfItem: 10),
-//        CompositionalModel(mainTitle: "Book Eleven", description: "Description of book eleven", image: "book11", nubmerOfItem: 11),
-//        CompositionalModel(mainTitle: "Book Twelve", description: "Description of book twelve", image: "book12", nubmerOfItem: 12),
-//        CompositionalModel(mainTitle: "Book Thirteen", description: "Description of book thirteen", image: "book13", nubmerOfItem: 13),
-//        CompositionalModel(mainTitle: "Book Fourteen", description: "Description of book fourteen", image: "book14", nubmerOfItem: 14)
-//        ]
     ]
 }
