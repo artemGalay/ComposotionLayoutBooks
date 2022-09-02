@@ -46,8 +46,6 @@ class CenterBooksCollectionViewCell: UICollectionViewCell {
             image.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
             image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
             image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
-
         ])
-    
+    }
 }
-        }

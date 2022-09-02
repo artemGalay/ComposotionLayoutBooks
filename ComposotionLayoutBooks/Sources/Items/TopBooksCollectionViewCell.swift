@@ -30,8 +30,7 @@ class TypeBooksCollectionViewCell: UICollectionViewCell {
 
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -39,7 +38,6 @@ class TypeBooksCollectionViewCell: UICollectionViewCell {
     lazy var typeBooksLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
-        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -90,10 +88,4 @@ class TypeBooksCollectionViewCell: UICollectionViewCell {
             labelStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
         ])
     }
-
-    override func prepareForReuse() {
-        self.image.image = nil
-    }
-
-    
 }
